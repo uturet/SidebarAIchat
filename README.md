@@ -1,6 +1,4 @@
-[sidebaraichat.com](https://sidebaraichat.com)
-
-# SidebarAI Chat
+# [SidebarAI Chat](https://sidebaraichat.com)
 
 This repository contains the static landing page for SidebarAI Chat. The project aims to bring any AI model into your browser without subscriptions by letting you plug in your own API key and start chatting.
 
