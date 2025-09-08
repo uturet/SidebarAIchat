@@ -40,7 +40,7 @@
         padding: 1.5rem;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
       }
 
       header h1 {
@@ -49,8 +49,12 @@
         font-weight: 600;
       }
 
+      header nav {
+        margin-left: auto;
+      }
+
       header nav a {
-        margin-left: 1rem;
+        margin-right: 1rem;
         color: var(--text);
         text-decoration: none;
       }
@@ -98,7 +102,7 @@
   <body>
     <header>
       <h1><a href="/">Sidebar AI Chat</a></h1>
-      <nav><a href="/docs/">Documentation</a></nav>
+      <nav><a href="/docs/">Docs</a></nav>
       <button id="theme-toggle" aria-label="Toggle theme"></button>
     </header>
     <main>
@@ -110,7 +114,7 @@
       <p>You're ready to begin chatting with your chosen model.</p>
     </main>
     <footer>
-      © <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Documentation</a>
+      © <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Docs</a>
     </footer>
     <script>
       const year = document.getElementById("year");
