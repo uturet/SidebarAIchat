@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Getting Started - SidebarAIchat.com</title>
+    <style>
+      :root {
+        --bg: #f7f7f8;
+        --text: #343541;
+        --border: #d1d5db;
+        --muted: #6b7280;
+        --header-bg: #ffffff;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      body.dark {
+        --bg: #343541;
+        --text: #ececf1;
+        --border: #444654;
+        --muted: #9ca3af;
+        --header-bg: #202123;
+      }
+
+      header {
+        background-color: var(--header-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      header nav a {
+        margin-left: 1rem;
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      #theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text);
+        width: 32px;
+        height: 32px;
+      }
+
+      #theme-toggle svg {
+        width: 100%;
+        height: 100%;
+        stroke: currentColor;
+        fill: none;
+      }
+
+      main {
+        flex: 1;
+        max-width: 720px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      p {
+        margin: 1rem 0;
+        color: var(--muted);
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        border-top: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>SidebarAIchat.com</h1>
+      <nav><a href="/docs/">Documentation</a></nav>
+      <button id="theme-toggle" aria-label="Toggle theme"></button>
+    </header>
+    <main>
+      <h2>Getting Started</h2>
+      <p>SidebarAI Chat lets you bring any AI model into your browser without subscriptions.</p>
+      <p>1. Install the extension and open the sidebar.
+      <br>2. Add your preferred AI model provider.
+      <br>3. Start a new chat and plug in your API key when prompted.</p>
+      <p>You're ready to begin chatting with your chosen model.</p>
+    </main>
+    <footer>
+      © <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Documentation</a>
+    </footer>
+    <script>
+      const year = document.getElementById("year");
+      year.textContent = new Date().getFullYear();
+
+      const toggle = document.getElementById("theme-toggle");
+      const sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m17.657-7.657l-1.414 1.414M6.343 17.657l-1.414 1.414m0-12.728l1.414 1.414m12.728 12.728l1.414-1.414"/></svg>';
+      const moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+      function applyTheme(dark) {
+        document.body.classList.toggle("dark", dark);
+        toggle.innerHTML = dark ? sunIcon : moonIcon;
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+
+      const stored = localStorage.getItem("theme");
+      applyTheme(stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      toggle.addEventListener("click", () => {
+        const isDark = !document.body.classList.contains("dark");
+        applyTheme(isDark);
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>
