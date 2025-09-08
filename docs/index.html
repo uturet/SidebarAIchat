@@ -12,6 +12,7 @@
         --border: #d1d5db;
         --muted: #6b7280;
         --header-bg: #ffffff;
+        --nav-link-hover: #1f2937;
       }
 
       body {
@@ -32,6 +33,7 @@
         --border: #444654;
         --muted: #9ca3af;
         --header-bg: #202123;
+        --nav-link-hover: #d1d5db;
       }
 
       header {
@@ -57,6 +59,13 @@
         margin-right: 1rem;
         color: var(--text);
         text-decoration: none;
+        font-size: 1.125rem;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      header nav a:hover {
+        color: var(--nav-link-hover);
       }
 
       #theme-toggle {
