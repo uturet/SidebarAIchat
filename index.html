@@ -71,6 +71,12 @@
         font-weight: 600;
       }
 
+      header nav a {
+        margin-left: 1rem;
+        color: var(--text);
+        text-decoration: none;
+      }
+
       #theme-toggle {
         background: none;
         border: none;
@@ -147,8 +153,9 @@
   </head>
   <body>
     <header>
+      <h1>SidebarAIchat.com</h1>
+      <nav><a href="/docs/">Documentation</a></nav>
       <button id="theme-toggle" aria-label="Toggle dark mode"></button>
-      <h1>Sidebar AI Chat </h1>
     </header>
     <main>
       <section class="hero">
@@ -237,7 +244,7 @@
         🚧 This project is still in development. Stay tuned for updates!
       </section>
     </main>
-    <footer>© <span id="year"></span> SidebarAIchat.com</footer>
+    <footer>© <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Documentation</a></footer>
 
     <script>
       const year = document.getElementById("year");
