@@ -119,6 +119,44 @@
     padding: 0 1rem;
   }
 
+  /* Breadcrumbs */
+  .breadcrumbs {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    color: var(--muted);
+  }
+
+  .breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .breadcrumbs li + li::before {
+    content: "/";
+    color: var(--border);
+    margin: 0 0.5rem;
+  }
+
+  .breadcrumbs a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs [aria-current="page"] {
+    color: var(--text);
+    font-weight: 600;
+  }
+
   h2 {
     font-size: 1.5rem;
     margin-top: 1.5rem;
