@@ -63,7 +63,7 @@
 
   header h1 a,
   header h1 a:visited {
-    color: #fff;
+    color: var(--text);
     text-decoration: none;
   }
 
@@ -209,6 +209,7 @@
 
   .header-icon {
     width: 2rem;
+    stroke: currentColor;
   }
   .text-center {
     text-align: center;
