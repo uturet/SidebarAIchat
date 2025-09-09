@@ -32,7 +32,7 @@
       <h3>1. Configure Ollama with a Reverse Proxy</h3>
       <p>Run Ollama behind a secure reverse proxy so it can be reached from your browser. Map the proxy to the port where Ollama listens and enable HTTPS.</p>
       <p>Ollama enforces a strict CORS policy and rejects unknown origins. Requests from the Chrome extension include a <code>chrome-extension://</code> origin that Ollama blocks, so the proxy must handle CORS headers.</p>
-      <pre><code class="language-nginx"># Nginx will listen on 127.0.0.1:3030 and forward to 127.0.0.1:11434
+      <pre><code class="hljs"># Nginx will listen on 127.0.0.1:3030 and forward to 127.0.0.1:11434
 # Only allow the specific Chrome extension origin.
 # Example allowed origin:
 #   chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm
