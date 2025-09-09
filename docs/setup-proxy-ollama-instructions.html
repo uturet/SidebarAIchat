@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <title>Setup Proxy Ollama Instructions - SidebarAIchat.com</title>
+    <title>Set up Reverse Proxy for Ollama</title>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
@@ -20,14 +20,71 @@
       <ol>
         <li><a href="/">Home</a></li>
         <li><a href="/docs/">Docs</a></li>
-        <li><span aria-current="page">Setup Proxy Ollama Instructions</span></li>
+        <li><span aria-current="page">Set up Reverse Proxy for Ollama</span></li>
       </ol>
     </nav>
     <main>
-      <h2>Setup Proxy Ollama Instructions</h2>
+      <h2>Set up Reverse Proxy for Ollama</h2>
       <p>These steps walk you through connecting SidebarAI Chat to your own models and services.</p>
       <h3>1. Configure Ollama with a Reverse Proxy</h3>
       <p>Run Ollama behind a secure reverse proxy so it can be reached from your browser. Map the proxy to the port where Ollama listens and enable HTTPS.</p>
+      <p>Ollama enforces a strict CORS policy and rejects unknown origins. Requests from the Chrome extension include a <code>chrome-extension://</code> origin that Ollama blocks, so the proxy must handle CORS headers.</p>
+      <pre><code class="language-nginx"># Nginx will listen on 127.0.0.1:3030 and forward to 127.0.0.1:11434
+# Only allow the specific Chrome extension origin.
+# Example allowed origin:
+#   chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm
+
+map $http_origin $is_allowed_origin {
+    default 0;
+    "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm" 1;
+}
+
+server {
+    listen 127.0.0.1:3030;
+    server_name localhost;
+
+    # Long streaming timeouts for generation
+    proxy_read_timeout 3600s;
+    proxy_send_timeout 3600s;
+    proxy_request_buffering off;
+    proxy_buffering off;
+
+    # Preflight (OPTIONS)
+    if ($request_method = OPTIONS) {
+        add_header Vary "Origin, Access-Control-Request-Method, Access-Control-Request-Headers";
+        if ($is_allowed_origin = 1) {
+            add_header Access-Control-Allow-Origin $http_origin always;
+            add_header Access-Control-Allow-Credentials "true" always;
+            add_header Access-Control-Allow-Methods "GET,POST,PUT,PATCH,DELETE,OPTIONS" always;
+            add_header Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, x-ollama-proxy-key" always;
+            return 204;
+        }
+        return 403;
+    }
+
+    location / {
+        # Strict Origin gate
+        if ($is_allowed_origin = 0) {
+            return 403;
+        }
+
+        # CORS for allowed origin
+        add_header Vary "Origin, Access-Control-Request-Method, Access-Control-Request-Headers" always;
+        add_header Access-Control-Allow-Origin $http_origin always;
+        add_header Access-Control-Allow-Credentials "true" always;
+
+        proxy_pass http://127.0.0.1:11434;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host 127.0.0.1:11434;
+        proxy_set_header Connection "";
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # If you want an extra shared-secret check, uncomment:
+        # if ($http_x_ollama_proxy_key != "s3cr3t123") { return 403; }
+    }
+}</code></pre>
       <h3>2. Provide API Keys</h3>
       <p>Create or obtain API keys from your chosen model providers. In the extension's settings, add each key under the appropriate provider.</p>
       <h3>3. Verify Connectivity</h3>
