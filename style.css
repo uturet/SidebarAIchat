@@ -210,3 +210,31 @@
   .header-icon {
     width: 2rem;
   }
+  .text-center {
+    text-align: center;
+  }
+  /* CTA button */
+  .cta-button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    background: #2563eb;
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s ease, transform 0.05s ease;
+  }
+
+  .cta-button:hover {
+    background: #1e40af;
+  }
+
+  .cta-button:active {
+    transform: translateY(1px);
+  }
+
+  .disabled {
+    background: #999999 !important;
+    color: #dddddd !important;
+  }

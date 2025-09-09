@@ -6,15 +6,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="Bring any AI model into your browser without subscriptions. Plug in your own API key and start chatting." />
+    <meta name="description" content="Sidebar AI Chat is a Chrome side panel extension that lets you chat with AI models using your own API keys. Add providers like OpenAI or Ollama, configure chats, and drop files right into the conversation." />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sidebar AI Chat" />
-    <meta property="og:description" content="Bring any AI model into your browser without subscriptions. Plug in your own API key and start chatting." />
+    <meta property="og:description" content="Chat with AI in the browser side panel. Use your own API keys. Supports OpenAI and Ollama, with reusable chat configurations and file drop." />
     <meta property="og:image" content="https://sidebaraichat.com/og-image.png" />
     <meta property="og:url" content="https://sidebaraichat.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sidebar AI Chat" />
-    <meta name="twitter:description" content="Bring any AI model into your browser without subscriptions. Plug in your own API key and start chatting." />
+    <meta name="twitter:description" content="A side panel AI chat for your browser. Bring your own keys, pick a model, and start chatting." />
     <meta name="twitter:image" content="https://sidebaraichat.com/og-image.png" />
     <title>Sidebar AI Chat</title>
   </head>
@@ -29,89 +29,77 @@
     </header>
     <main>
       <section class="hero">
-        <h2>Bring any AI model into your browser</h2>
+        <h2>AI chat in your browser side panel</h2>
         <p>
-          No subscriptions. Just plug in your own API key and start chatting.
+          Use your own API keys. Pick a model per chat. Keep everything local to your browser.
         </p>
-        <img src="about:blank" alt="Hero image" class="placeholder" />
+        <p>
+          <a href="/docs/getting-started.html">Get Started</a> · <a href="/docs/setup-instructions.html">Setup</a> · <a href="/docs/troubleshooting.html">Troubleshooting</a>
+        </p>
+        <img src="about:blank" alt="Sidebar AI Chat hero illustration" class="placeholder" />
       </section>
 
       <section class="feature">
-        <h2>Selecting a Model</h2>
+        <h2>Side panel on any site</h2>
         <p>
-          Pick from any AI model you've added to the sidebar. You're never
-          locked into one provider—use the right tool for the job.
+          Open the Chrome side panel and chat without leaving the page. Messages stream with code highlighting for readable outputs.
         </p>
-        <img
-          src="about:blank"
-          alt="Model selection screenshot"
-          class="placeholder"
-        />
+        <img src="about:blank" alt="Side panel open over a web page" class="placeholder" />
       </section>
 
       <section class="feature">
-        <h2>Working With Files</h2>
+        <h2>Bring your own providers</h2>
         <p>
-          Upload text-based files like TXT, CSV, JSON or XML directly into the
-          chat. PDFs and images are on the roadmap.
+          Connect assistants like <strong>OpenAI (Chat Completions)</strong> or <strong>Ollama</strong>. Configure available models per provider, then choose one for each chat.
         </p>
-        <img
-          src="about:blank"
-          alt="File upload screenshot"
-          class="placeholder"
-        />
+        <p class="muted">Planned: additional providers (e.g., Claude, Grok).</p>
+        <img src="about:blank" alt="Assistant providers and model selection" class="placeholder" />
       </section>
 
       <section class="feature">
-        <h2>Managing Chats</h2>
+        <h2>Reusable chat configurations</h2>
         <p>
-          Every conversation is saved. Switching chats while a response streams
-          is a known issue—expect real-time updates soon.
+          Bundle a provider, model list, and custom instructions into a configuration you can reuse. Swap setups instantly across chats.
         </p>
-        <img
-          src="about:blank"
-          alt="Chat management screenshot"
-          class="placeholder"
-        />
+        <img src="about:blank" alt="Chat configuration management" class="placeholder" />
       </section>
 
       <section class="feature">
-        <h2>Messaging and Output</h2>
+        <h2>Work with files</h2>
         <p>
-          Send messages normally and enjoy highlighted code. LaTeX support isn't
-          here yet but it's in the plans.
+          Drag and drop files into the panel to include their contents in context. Text formats like TXT, CSV, JSON, and XML are supported first.
         </p>
-        <img src="about:blank" alt="Messaging screenshot" class="placeholder" />
+        <img src="about:blank" alt="Dragging files into the side panel" class="placeholder" />
       </section>
 
       <section class="feature">
-        <h2>Assistants and Instructions</h2>
+        <h2>Local-first data</h2>
         <p>
-          Add multiple assistants for different providers and assign custom
-          instructions per chat for quicker prompts.
+          Chats, assistants, and configurations are stored locally in your browser. You control the keys and the data.
         </p>
-        <img
-          src="about:blank"
-          alt="Assistants screenshot"
-          class="placeholder"
-        />
+        <img src="about:blank" alt="Local storage and privacy concept" class="placeholder" />
       </section>
 
       <section class="feature">
-        <h2>Chat Configurations</h2>
+        <h2>How it works</h2>
         <p>
-          Bundle models, assistants and instructions into reusable
-          configurations. Swap setups with a single click.
+          1) Install and open the side panel · 2) Add an assistant (OpenAI or Ollama) · 3) Create a chat configuration · 4) Start chatting.
         </p>
-        <img
-          src="about:blank"
-          alt="Chat configuration screenshot"
-          class="placeholder"
-        />
+        <p class="text-center"><a href="/docs/getting-started.html">Read the quick start guide →</a></p>
+        
       </section>
 
       <section class="status">
-        🚧 This project is still in development. Stay tuned for updates!
+        🚧 Alpha: actively evolving. Some features and providers are still in progress.
+
+        <!-- <p class="text-center">
+          <a
+            class="cta-button"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Install from Chrome Web Store</a>
+        </p> -->
       </section>
     </main>
     <footer>© <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Docs</a></footer>
