@@ -35,11 +35,11 @@
       <pre><code class="hljs"># Nginx will listen on 127.0.0.1:3030 and forward to 127.0.0.1:11434
 # Only allow the specific Chrome extension origin.
 # Example allowed origin:
-#   chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm
+#   chrome-extension://<ID>
 
 map $http_origin $is_allowed_origin {
     default 0;
-    "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm" 1;
+    "chrome-extension://<ID>" 1;
 }
 
 server {
