@@ -1,0 +1,4 @@
+# robots.txt for SidebarAI Chat
+User-agent: *
+Allow: /
+Disallow: /404.html
