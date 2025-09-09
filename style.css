@@ -40,6 +40,12 @@
     --nav-link-hover: #d1d5db;
   }
 
+  a,
+  a:visited {
+    color: var(--text);
+    text-decoration-color: currentColor;
+  }
+
   header {
     background-color: var(--header-bg);
     border-bottom: 1px solid var(--border);
