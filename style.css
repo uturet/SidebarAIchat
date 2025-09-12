@@ -305,7 +305,13 @@ pre code {
   border-radius: 10px;
   overflow-x: auto;
   max-height: 1000px;
+  
+}
+
+code.command {
   overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 /* Code visibility toggle */
