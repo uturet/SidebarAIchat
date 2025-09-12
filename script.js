@@ -23,3 +23,56 @@ if (toggle) {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 }
+
+const btns = document.querySelectorAll('button.code-toggle')
+btns.forEach(btn => btn.addEventListener("click", () => {
+  const code = document.querySelector(`pre[data-code="${btn.dataset.code}"]`)
+  code.classList.toggle("code-hidden")
+  btn.textContent = code.classList.contains("code-hidden") ? "Hide code" : "Show code";
+}))
+
+function flashHighlight(el) {
+  const prev = el.style.outline;
+  el.style.outline = '2px solid rgba(0,0,0,0.3)';
+  setTimeout(() => { el.style.outline = prev || ''; }, 350);
+}
+
+async function copyCodeFor(btn) {
+  const key = btn.dataset.code;
+  const pre = document.querySelector(`pre[data-code="${key}"]`);
+  const codeEl = pre ? pre.querySelector('code') : null;
+  if (!codeEl) return;
+
+  // Get exact code text (preserves newlines/indentation)
+  const text = codeEl.textContent;
+
+  // Optional: visually show selection feedback (no real selection needed)
+  flashHighlight(codeEl);
+
+  // Clipboard API copy (requires HTTPS or localhost, and a user gesture)
+  await navigator.clipboard.writeText(text);
+
+  // Button feedback
+  const prev = btn.textContent;
+  btn.textContent = 'Copied!';
+  setTimeout(() => { btn.textContent = prev; }, 1200);
+}
+
+// Attach listeners (feature-detect Clipboard API)
+const copyBtns = document.querySelectorAll('button.code-copy');
+copyBtns.forEach(btn => {
+  btn.addEventListener('click', async () => {
+    try {
+      if (!navigator.clipboard || !window.isSecureContext) {
+        // If you need to support non-secure contexts or very old iOS,
+        // there is no non-deprecated automatic copy path without execCommand.
+        // Serve over HTTPS or run on localhost for this to work.
+        throw new Error('Clipboard API unavailable in this context.');
+      }
+      await copyCodeFor(btn);
+    } catch (err) {
+      // Hard fail silently to avoid showing key-hints; keep UI clean
+      console.error(err);
+    }
+  }, { passive: true });
+});

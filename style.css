@@ -293,6 +293,9 @@ footer {
 
 pre {
   white-space: break-spaces;
+  max-height: 1040px;
+  overflow-y: hidden;
+  transition: all 1s;
 }
 
 pre code {
@@ -300,4 +303,46 @@ pre code {
   padding: 1rem;
   border-radius: 10px;
   overflow-x: auto;
+  max-height: 1000px;
 }
+
+/* Code visibility toggle */
+.code-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  gap: .5rem;
+  margin: 0 0 1rem;
+}
+
+button.code-toggle {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: .4rem .7rem;
+  border-radius: 8px;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+button.code-toggle:hover {
+  background: var(--status-bg);
+}
+
+/* Code copy button – matches toggle style */
+button.code-copy {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: .4rem .7rem;
+  border-radius: 8px;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+button.code-copy:hover {
+  background: var(--status-bg);
+}
+
+pre.code-hidden { max-height: 0; }
