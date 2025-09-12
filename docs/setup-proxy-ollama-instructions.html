@@ -33,58 +33,56 @@
       <p>Run Ollama behind a secure reverse proxy so it can be reached from your browser. Map the proxy to the port where Ollama listens and enable HTTPS.</p>
       <p>Ollama enforces a strict CORS policy and rejects unknown origins. Requests from the Chrome extension include a <code>chrome-extension://</code> origin that Ollama blocks, so the proxy must handle CORS headers.</p>
       <p>If you need to install Nginx, see <a href="setup-nginx.html">Set up Nginx on Windows, Linux, and macOS</a>.</p>
+      <p><strong>Create new file </strong> 
+        <code id="nginx-default-path">(detecting OS...)</code></p>
       <div class="code-toolbar">
         <button type="button" class="code-toggle" id="code-toggle" aria-pressed="true" data-code="nginx-proxy">Hide code</button>
         <button type="button" class="code-copy" aria-label="Copy code" data-code="nginx-proxy">Copy</button>
       </div>
-      <pre data-code="nginx-proxy"><code class="hljs"># /etc/nginx/conf.d/ollama-proxy.conf
-
-# 1) Only allow CORS if Origin is exactly your extension.
-map $http_origin $cors_origin {
-    default                            "";
-    "~^chrome-extension://ID$"         $http_origin;
-}
-
-server {
-    listen 8080;                      # change if you want a different port
-    server_name _;
-
-    # 2) Preflight handling (fast path).
-    if ($request_method = OPTIONS) {
-        add_header Access-Control-Allow-Origin  $cors_origin always;
-        add_header Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS" always;
-        add_header Access-Control-Allow-Headers "Authorization, Content-Type, Accept, Accept-Language, Range" always;
-        add_header Access-Control-Max-Age       86400 always;
-        add_header Content-Length               0;
-        add_header Content-Type                 text/plain;
-        return 204;
+      <pre data-code="nginx-proxy"><code class="hljs language-python">server {
+        listen 8080;
+        server_name localhost;
+    
+        client_max_body_size 100M;
+    
+        location / {
+            if ($request_method = 'OPTIONS') {
+                add_header 'Access-Control-Allow-Origin' 'chrome-extension://ID';
+                add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE';
+                add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization';
+                add_header 'Access-Control-Max-Age' 1728000;
+                add_header 'Content-Type' 'text/plain; charset=utf-8';
+                add_header 'Content-Length' 0;
+                return 204;
+            }
+    
+            # CORS headers for actual requests
+            add_header 'Access-Control-Allow-Origin' 'chrome-extension://ID' always;
+            add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE' always;
+            add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization' always;
+            add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range' always;
+    
+            # Proxy to Ollama
+            proxy_pass http://127.0.0.1:11434;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+    
+            # Remove/override Origin header to prevent leakage
+            proxy_set_header Origin "";
+    
+            # Handle streaming responses
+            proxy_buffering off;
+            proxy_cache off;
+    
+            # Increase timeouts for long-running requests
+            proxy_connect_timeout 60s;
+            proxy_send_timeout 300s;
+            proxy_read_timeout 300s;
+        }
     }
-
-    # 3) Proxy everything to the local Ollama API.
-    location / {
-        # CORS headers (sent on normal requests too)
-        add_header Access-Control-Allow-Origin  $cors_origin always;
-        add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Content-Type" always;
-
-        proxy_pass         http://127.0.0.1:11434;
-        proxy_http_version 1.1;
-        proxy_set_header   Host               $host;
-        proxy_set_header   X-Real-IP          $remote_addr;
-        proxy_set_header   X-Forwarded-For    $proxy_add_x_forwarded_for;
-        proxy_set_header   X-Forwarded-Proto  $scheme;
-
-        # Good for streaming responses (SSE) from Ollama
-        proxy_buffering    off;
-        proxy_read_timeout 3600s;
-        proxy_send_timeout 3600s;
-        chunked_transfer_encoding on;
-    }
-
-    # (Optional) deny everything else not matching your CORS rule for non-CORS tools trying to hit it
-    # location / {
-    #     if ($cors_origin = "") { return 403; }
-    # }
-}</code></pre>
+    </code></pre>
       <h3>2. Provide API Keys</h3>
       <p>Create or obtain API keys from your chosen model providers. In the extension's settings, add each key under the appropriate provider.</p>
       <h3>3. Verify Connectivity</h3>

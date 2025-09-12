@@ -125,6 +125,7 @@ header nav a:hover {
   height: 20px;
   stroke: currentColor;
   fill: none;
+  display: block;
 }
 
 main {
@@ -304,6 +305,7 @@ pre code {
   border-radius: 10px;
   overflow-x: auto;
   max-height: 1000px;
+  overflow-wrap: anywhere;
 }
 
 /* Code visibility toggle */

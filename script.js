@@ -5,7 +5,8 @@ if (year) {
 
 const toggle = document.getElementById("theme-toggle");
 if (toggle) {
-  const sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m17.657-7.657l-1.414 1.414M6.343 17.657l-1.414 1.414m0-12.728l1.414 1.414m12.728 12.728l1.414-1.414"/></svg>';
+  // Use an evenly balanced sun icon (absolute positions) to avoid drift
+  const sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
   const moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 
   function applyTheme(dark) {
@@ -76,3 +77,29 @@ copyBtns.forEach(btn => {
     }
   }, { passive: true });
 });
+
+// Detect OS and show default Nginx path for proxy file
+(function setNginxDefaultPath() {
+  const el = document.getElementById('nginx-default-path');
+  if (!el) return;
+
+  const ua = navigator.userAgent || '';
+  const platform = navigator.platform || '';
+
+  const isWindows = /Win/.test(platform) || /Windows/.test(ua);
+  const isMac = /Mac/.test(platform) || /Mac OS X/.test(ua);
+  const isLinux = /Linux/.test(platform) && !/Android/.test(ua);
+
+  let path = '/etc/nginx/sites-available/ollama-proxy'; // sensible default (Linux)
+
+  if (isWindows) {
+    path = 'C\\\\nginx\\\\conf\\\\servers\\\\ollama-proxy.conf';
+  } else if (isMac) {
+    // Homebrew nginx locations: Intel vs Apple Silicon
+    path = '/usr/local/etc/nginx/servers/ollama-proxy.conf (or /opt/homebrew/etc/nginx/servers/ollama-proxy.conf)';
+  } else if (isLinux) {
+    path = '/etc/nginx/sites-available/ollama-proxy';
+  }
+
+  el.textContent = path;
+})();
