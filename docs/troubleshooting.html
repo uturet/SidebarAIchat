@@ -27,14 +27,26 @@
     </nav>
     <main>
       <h2>Troubleshooting</h2>
-      <p>If something isn't working, try the following steps:</p>
+      <p>If something is not working, work through the relevant section below.</p>
+      <h3>No responses from the model</h3>
       <ul>
-        <li>Refresh the page or restart your browser.</li>
-        <li>Verify that your API keys are valid and have not expired.</li>
-        <li>Check your network connection and proxy settings.</li>
-        <li>Look at the browser console for error messages.</li>
+        <li>Confirm your API key is correct and has quota remaining.</li>
+        <li>Check that your proxy or Ollama instance is reachable from the machine running your browser.</li>
+        <li>Open the browser developer tools (Console tab) to look for CORS or network errors.</li>
       </ul>
-      <p>If issues persist, reach out on the project repository with details.</p>
+      <h3>Extension does not load</h3>
+      <ul>
+        <li>Reload the side panel or restart the browser entirely.</li>
+        <li>Disable conflicting extensions that also customize the side panel.</li>
+        <li>If you are using an unpacked build, verify the source folder is still accessible on disk.</li>
+      </ul>
+      <h3>Proxy configuration issues</h3>
+      <ul>
+        <li>Review your Nginx (or other proxy) logs for denied requests.</li>
+        <li>Ensure the <code>chrome-extension://ID</code> placeholder was replaced with the real extension ID.</li>
+        <li>After editing the configuration, reload the proxy so the new settings apply.</li>
+      </ul>
+      <p>If issues persist, open an issue on the project repository with screenshots, console logs, and the steps to reproduce the problem.</p>
     </main>
     <footer>
       © <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Docs</a>
