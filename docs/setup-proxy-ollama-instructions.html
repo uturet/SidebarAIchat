@@ -83,10 +83,6 @@
         }
     }
     </code></pre>
-      <p>Replace <code>ID</code> with the actual extension ID from <strong>chrome://extensions</strong>. If you serve Sidebar AI Chat from a custom domain, include that domain in an additional <code>add_header 'Access-Control-Allow-Origin'</code> line.</p>
-      <h3>2. Provide API keys</h3>
-      <p>Create or obtain API keys from your chosen model providers. In the extension's settings, add each key under the appropriate provider.</p>
-      <h3>3. Verify connectivity</h3>
       <p>Reload Nginx, open the sidebar, and start a test chat. You should see a streaming response from the model. If the request fails, inspect the browser console and Nginx logs for CORS or proxy errors.</p>
     </main>
     <footer>
