@@ -58,6 +58,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 1.25rem;
 }
 
 .brand {
@@ -73,6 +74,25 @@ header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; }
     }
   }
 
+@media (max-width: 600px) {
+  .site-header,
+  header {
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .site-nav a,
+  header nav a {
+    margin-right: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  #theme-toggle {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .brand a,
 .brand a:visited,
 header h1 a,
@@ -86,6 +106,7 @@ header h1 a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
 }
 
 .site-nav,
@@ -101,6 +122,16 @@ header nav a {
   font-size: 1rem;
   font-weight: 600;
   transition: color 0.2s;
+}
+
+.site-nav a[aria-current="page"],
+header nav a[aria-current="page"] {
+  color: var(--muted);
+}
+
+.site-nav a:last-child,
+header nav a:last-child {
+  margin-right: 0;
 }
 
 .site-nav a:hover,
