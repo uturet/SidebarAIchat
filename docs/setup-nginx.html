@@ -28,12 +28,12 @@
     </nav>
     <main>
       <h2>Set up Nginx on Windows, Linux, and macOS</h2>
-      <p>Nginx is a high‑performance web server and reverse proxy. Follow these platform‑specific instructions to install it.</p>
+      <p>Nginx is a high-performance web server and reverse proxy. Install it on the platform you use to host Sidebar AI Chat integrations.</p>
       <h3>Windows</h3>
       <ol>
         <li>Download the <a href="https://nginx.org/en/download.html">Windows build of Nginx</a>.</li>
-        <li>Extract the archive and run <code>nginx.exe</code>.</li>
-        <li>To start automatically, create a scheduled task or service pointing to the executable.</li>
+        <li>Extract the archive to a permanent folder such as <code>C:\nginx</code> and run <code>nginx.exe</code>.</li>
+        <li>To start automatically, create a scheduled task or Windows service that launches the executable on boot.</li>
       </ol>
       <h3>Linux</h3>
       <p>Use your distribution's package manager:</p>
@@ -44,13 +44,15 @@ sudo apt install nginx
 # Fedora/CentOS/RHEL
 sudo dnf install nginx
 sudo systemctl enable --now nginx</code></pre>
+      <p>After installation, ensure the service is running with <code>systemctl status nginx</code>.</p>
       <h3>macOS</h3>
       <ol>
         <li>Install <a href="https://brew.sh/">Homebrew</a> if you don't have it.</li>
-        <li>Run <code class="hljs">brew install nginx</code> to install.</li>
-        <li>Start Nginx with <code class="hljs">brew services start nginx</code> to run it in the background.</li>
+        <li>Run <code class="hljs">brew install nginx</code>.</li>
+        <li>Start Nginx in the background with <code class="hljs">brew services start nginx</code>.</li>
       </ol>
-      <p>Once Nginx is running, you can configure it as a reverse proxy or web server.</p>
+      <h3>Next steps</h3>
+      <p>Once Nginx is running, update the configuration file for your proxy. Replace the <code>chrome-extension://ID</code> placeholder with your actual extension ID, then reload Nginx (<code>nginx -s reload</code> or <code>systemctl reload nginx</code>) so the changes take effect.</p>
     </main>
     <footer>
       © <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Docs</a>
