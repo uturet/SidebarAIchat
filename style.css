@@ -8,6 +8,8 @@
   --status-border: #e5e7eb;
   --status-text: #334155;
   --nav-link-hover: #111111;
+  --accent: #2563eb;
+  --accent-soft: rgba(37,99,235,0.1);
   --shadow-lg: 0 30px 60px rgba(0,0,0,0.08), 0 12px 24px rgba(0,0,0,0.06);
   --shadow-md: 0 12px 24px rgba(0,0,0,0.08);
 }
@@ -39,6 +41,8 @@ body.dark {
   --status-border: #1c1f27;
   --status-text: #cbd5e1;
   --nav-link-hover: #ffffff;
+  --accent: #60a5fa;
+  --accent-soft: rgba(96,165,250,0.18);
   --shadow-lg: 0 30px 60px rgba(0,0,0,0.6), 0 12px 24px rgba(0,0,0,0.4);
   --shadow-md: 0 12px 24px rgba(0,0,0,0.45);
 }
@@ -293,10 +297,16 @@ p {
   background: var(--bg);
   box-shadow: var(--shadow-md);
   overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .faq-card[open] {
   box-shadow: var(--shadow-lg);
+}
+
+.faq-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg), 0 0 0 2px var(--accent-soft);
 }
 
 .faq-card summary {
@@ -306,9 +316,10 @@ p {
   font-weight: 600;
   font-size: 1.05rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
+  transition: background-color 0.2s ease;
 }
 
 .faq-card summary::-webkit-details-marker {
@@ -318,12 +329,28 @@ p {
 .faq-card summary::after {
   content: "+";
   font-size: 1.25rem;
-  transform: rotate(0deg);
-  transition: transform 0.2s ease;
+  line-height: 1;
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.faq-card summary:hover {
+  background: var(--status-bg);
+}
+
+.faq-card summary:focus-visible {
+  outline: none;
+  background: var(--status-bg);
+}
+
+.faq-card[open] summary {
+  border-bottom: 1px solid var(--border);
 }
 
 .faq-card[open] summary::after {
-  transform: rotate(45deg);
+  content: "\2212";
+  transform: none;
 }
 
 .faq-content {
