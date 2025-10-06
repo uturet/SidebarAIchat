@@ -25,12 +25,21 @@ if (toggle) {
   });
 }
 
-const btns = document.querySelectorAll('button.code-toggle')
-btns.forEach(btn => btn.addEventListener("click", () => {
-  const code = document.querySelector(`pre[data-code="${btn.dataset.code}"]`)
-  code.classList.toggle("code-hidden")
-  btn.textContent = code.classList.contains("code-hidden") ? "Hide code" : "Show code";
-}))
+const btns = document.querySelectorAll("button.code-toggle");
+btns.forEach((btn) =>
+  btn.addEventListener("click", () => {
+    const code = document.querySelector(`pre[data-code="${btn.dataset.code}"]`);
+    if (!code) {
+      console.warn(`No matching code block found for toggle button: ${btn.dataset.code}`);
+      return;
+    }
+
+    code.classList.toggle("code-hidden");
+    const isHidden = code.classList.contains("code-hidden");
+    btn.textContent = isHidden ? "Show code" : "Hide code";
+    btn.setAttribute("aria-expanded", String(!isHidden));
+  })
+);
 
 function flashHighlight(el) {
   const prev = el.style.outline;
@@ -61,7 +70,7 @@ async function copyCodeFor(btn) {
 
 // Attach listeners (feature-detect Clipboard API)
 const copyBtns = document.querySelectorAll('button.code-copy');
-copyBtns.forEach(btn => {
+copyBtns.forEach((btn) => {
   btn.addEventListener('click', async () => {
     try {
       if (!navigator.clipboard || !window.isSecureContext) {
