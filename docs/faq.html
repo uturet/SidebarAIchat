@@ -25,32 +25,202 @@
         <li><span aria-current="page">FAQ</span></li>
       </ol>
     </nav>
-    <main>
+    <main class="faq">
       <h2>FAQ</h2>
-      <p><strong>Can I use multiple AI providers?</strong><br />Yes. Add each provider in the settings and choose the one you need for every chat. You can switch models without losing conversation history.</p>
-      <p><strong>Where are my chats stored?</strong><br />Chats are saved locally in your browser. Clearing your cache or uninstalling the extension removes them, so export important conversations first.</p>
-      <p><strong>Is there a cost to use SidebarAI Chat?</strong><br />The extension is free. You only pay for usage charged by the API providers whose keys you connect.</p>
-      <p><strong>Does Sidebar AI Chat send data to external servers?</strong><br />No. Requests go directly from your browser to the provider or proxy you configure. Ensure HTTPS is enabled on any proxy you expose to the public internet.</p>
-      <p><strong>How do I find the extension ID mentioned in the proxy guide?</strong><br />Open <strong>chrome://extensions</strong>, enable developer mode, and copy the ID shown under Sidebar AI Chat.</p>
-      <p><strong>What does this extension do?</strong><br />The extension adds a workspace where you can chat with AI assistants while keeping quick access to settings in a collapsible sidebar. It lets you create or select assistants, define reusable instructions, configure default models, review previous conversations, and attach files to messages.</p>
-      <p><strong>Where does the data live?</strong><br />All assistants, instructions, chat setups, conversation history, and uploaded files are stored locally in the browser using persistent storage. Your information stays on the device and is automatically restored the next time you open the extension.</p>
-      <h3>Working with the Main Chat Area</h3>
-      <p><strong>How do I start a new chat?</strong><br />Use the <strong>+</strong> button below the input section. It clears the current conversation so the next message you send begins a fresh thread.</p>
-      <p><strong>How can I review previous conversations?</strong><br />Select the <strong>history</strong> icon beside the new chat button to open the conversation list. From there you can browse past threads and load any of them back into the workspace.</p>
-      <p><strong>Can I upload files to a chat?</strong><br />Yes. Drag files, images, or other supported assets onto the window. They are uploaded into local storage, linked to the relevant conversation, and displayed alongside the associated messages.</p>
-      <h3>Sidebar &amp; Settings Pages</h3>
-      <p><strong>How do I open the settings sidebar?</strong><br />Click the gear icon on the vertical toolbar. The sidebar slides out and reveals management pages for assistants, instructions, and chat configurations.</p>
-      <p><strong>What sections are available in settings?</strong><br />The settings area contains three primary sections: <strong>Assistants</strong>, <strong>Instructions</strong>, and <strong>Chat Configs</strong>. Each section provides list, detail, and editing views so you can manage the related records.</p>
-      <p><strong>How do I add a new assistant?</strong><br />Open <strong>Settings → Assistants</strong> and click the <strong>+</strong> button at the bottom of the list. Fill in the form with a name, the provider or model family, and any credentials that are required. The new assistant becomes available for future chats.</p>
-      <p><strong>How do I remove or edit an assistant?</strong><br />Within the assistant list, use the delete control to remove an entry or open the detail view to adjust its fields. Changes are saved immediately so they are reflected the next time you open the list.</p>
-      <p><strong>What are instructions and how do I create them?</strong><br />Instructions are reusable prompts that shape the behavior of your assistant. Navigate to <strong>Settings → Instructions</strong> to add, edit, or delete these templates. Once saved, instructions can be applied to any chat configuration.</p>
-      <p><strong>What are chat configurations?</strong><br />Chat configurations bundle an assistant, a set of instructions, and other preferences into a reusable preset. Manage them under <strong>Settings → Chat Configs</strong> to quickly switch the workspace between different workflows.</p>
-      <p><strong>How do I switch between chat configurations?</strong><br />Click one of the chat icons on the vertical toolbar. The active configuration is highlighted, and choosing another icon immediately updates the defaults used for new messages.</p>
-      <h3>Models &amp; Providers</h3>
-      <p><strong>Which model providers are supported?</strong><br />The extension supports multiple AI providers, including options such as OpenAI, Anthropic, xAI, and local runtimes. Each assistant can expose the models that are available for that provider, making it easy to compare responses across services.</p>
-      <p><strong>How are models chosen in the chat UI?</strong><br />When you open the message composer, the model selector presents the models from the currently active assistant or chat configuration. Switching configurations refreshes the list automatically so the selector stays in sync with your preferences.</p>
-      <h3>Accessibility</h3>
-      <p><strong>Does the UI adapt when settings are open?</strong><br />When the settings panel is active, the chat input is temporarily disabled. This prevents accidental sends while you adjust configurations and clearly indicates that the workspace is in edit mode.</p>
+      <p class="faq-intro">Browse common questions about providers, storage, configuration, and accessibility. Expand a topic below or jump to a section using the table of contents.</p>
+      <nav class="faq-toc" aria-label="FAQ topics">
+        <h3>On this page</h3>
+        <ul>
+          <li><a href="#general">General</a></li>
+          <li><a href="#working-with-main-chat">Working with the Main Chat Area</a></li>
+          <li><a href="#sidebar-settings">Sidebar &amp; Settings Pages</a></li>
+          <li><a href="#models-providers">Models &amp; Providers</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+        </ul>
+      </nav>
+
+      <section id="general" class="faq-section" aria-labelledby="general-heading">
+        <h3 id="general-heading">General</h3>
+        <div class="faq-list">
+          <details class="faq-card">
+            <summary>Can I use multiple AI providers?</summary>
+            <div class="faq-content">
+              <p>Yes. Add each provider in the settings and choose the one you need for every chat. You can switch models without losing conversation history.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>Where are my chats stored?</summary>
+            <div class="faq-content">
+              <p>Chats are saved locally in your browser. Clearing your cache or uninstalling the extension removes them, so export important conversations first.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>Is there a cost to use Sidebar AI Chat?</summary>
+            <div class="faq-content">
+              <p>The extension is free. You only pay for usage charged by the API providers whose keys you connect.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>Does Sidebar AI Chat send data to external servers?</summary>
+            <div class="faq-content">
+              <p>No. Requests go directly from your browser to the provider or proxy you configure. Ensure HTTPS is enabled on any proxy you expose to the public internet.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>How do I find the extension ID mentioned in the proxy guide?</summary>
+            <div class="faq-content">
+              <ol>
+                <li>Open <strong>chrome://extensions</strong> in your browser.</li>
+                <li>Enable <strong>Developer mode</strong> in the top-right corner.</li>
+                <li>Locate Sidebar AI Chat and copy the ID displayed beneath its title.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>What does this extension do?</summary>
+            <div class="faq-content">
+              <p>The extension adds a workspace where you can chat with AI assistants while keeping quick access to settings in a collapsible sidebar. It lets you create or select assistants, define reusable instructions, configure default models, review previous conversations, and attach files to messages.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>Where does the data live?</summary>
+            <div class="faq-content">
+              <p>All assistants, instructions, chat setups, conversation history, and uploaded files are stored locally in the browser using persistent storage. Your information stays on the device and is automatically restored the next time you open the extension.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="working-with-main-chat" class="faq-section" aria-labelledby="main-chat-heading">
+        <h3 id="main-chat-heading">Working with the Main Chat Area</h3>
+        <div class="faq-list">
+          <details class="faq-card">
+            <summary>How do I start a new chat?</summary>
+            <div class="faq-content">
+              <ol>
+                <li>Select the <strong>+</strong> button below the message composer.</li>
+                <li>Confirm that the workspace clears the current conversation.</li>
+                <li>Send your next message to begin a fresh thread.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>How can I review previous conversations?</summary>
+            <div class="faq-content">
+              <ol>
+                <li>Click the <strong>history</strong> icon beside the new chat button.</li>
+                <li>Browse the list of stored conversations.</li>
+                <li>Select a thread to load it back into the workspace.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>Can I upload files to a chat?</summary>
+            <div class="faq-content">
+              <p>Yes. Drag files, images, or other supported assets onto the window. They are uploaded into local storage, linked to the relevant conversation, and displayed alongside the associated messages.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="sidebar-settings" class="faq-section" aria-labelledby="sidebar-settings-heading">
+        <h3 id="sidebar-settings-heading">Sidebar &amp; Settings Pages</h3>
+        <div class="faq-list">
+          <details class="faq-card">
+            <summary>How do I open the settings sidebar?</summary>
+            <div class="faq-content">
+              <ol>
+                <li>Click the gear icon on the vertical toolbar.</li>
+                <li>Wait for the sidebar to slide into view.</li>
+                <li>Choose the section you want to manage from the sidebar navigation.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>What sections are available in settings?</summary>
+            <div class="faq-content">
+              <ul>
+                <li><strong>Assistants</strong> for creating and managing provider connections.</li>
+                <li><strong>Instructions</strong> for reusable prompt templates.</li>
+                <li><strong>Chat Configs</strong> for bundling assistants, instructions, and defaults.</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>How do I add a new assistant?</summary>
+            <div class="faq-content">
+              <ol>
+                <li>Open <strong>Settings → Assistants</strong>.</li>
+                <li>Select the <strong>+</strong> button at the bottom of the list.</li>
+                <li>Fill in the assistant name, provider or model family, and required credentials.</li>
+                <li>Save the form to make the assistant available for future chats.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>How do I remove or edit an assistant?</summary>
+            <div class="faq-content">
+              <ol>
+                <li>Open the assistant list from <strong>Settings → Assistants</strong>.</li>
+                <li>Choose the delete control to remove an entry or open its detail view.</li>
+                <li>Adjust the fields as needed—the changes save immediately.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>What are instructions and how do I create them?</summary>
+            <div class="faq-content">
+              <p>Instructions are reusable prompts that shape the behavior of your assistant. Navigate to <strong>Settings → Instructions</strong> to add, edit, or delete these templates. Once saved, instructions can be applied to any chat configuration.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>What are chat configurations?</summary>
+            <div class="faq-content">
+              <p>Chat configurations bundle an assistant, a set of instructions, and other preferences into a reusable preset. Manage them under <strong>Settings → Chat Configs</strong> to quickly switch the workspace between different workflows.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>How do I switch between chat configurations?</summary>
+            <div class="faq-content">
+              <ol>
+                <li>Hover over the chat icons on the vertical toolbar to find the configuration you need.</li>
+                <li>Click a different icon to activate it.</li>
+                <li>Confirm that the highlighted state updates, indicating the new defaults are applied.</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="models-providers" class="faq-section" aria-labelledby="models-providers-heading">
+        <h3 id="models-providers-heading">Models &amp; Providers</h3>
+        <div class="faq-list">
+          <details class="faq-card">
+            <summary>Which model providers are supported?</summary>
+            <div class="faq-content">
+              <p>The extension supports multiple AI providers, including options such as OpenAI, Anthropic, xAI, and local runtimes. Each assistant can expose the models that are available for that provider, making it easy to compare responses across services.</p>
+            </div>
+          </details>
+          <details class="faq-card">
+            <summary>How are models chosen in the chat UI?</summary>
+            <div class="faq-content">
+              <p>When you open the message composer, the model selector presents the models from the currently active assistant or chat configuration. Switching configurations refreshes the list automatically so the selector stays in sync with your preferences.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="accessibility" class="faq-section" aria-labelledby="accessibility-heading">
+        <h3 id="accessibility-heading">Accessibility</h3>
+        <div class="faq-list">
+          <details class="faq-card">
+            <summary>Does the UI adapt when settings are open?</summary>
+            <div class="faq-content">
+              <p>When the settings panel is active, the chat input is temporarily disabled. This prevents accidental sends while you adjust configurations and clearly indicates that the workspace is in edit mode.</p>
+            </div>
+          </details>
+        </div>
+      </section>
     </main>
     <footer>
       © <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Docs</a>

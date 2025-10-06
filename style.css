@@ -214,6 +214,176 @@ p {
   color: var(--muted);
 }
 
+/* FAQ layout */
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.faq h2 {
+  margin-top: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.01em;
+}
+
+.faq-intro {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.faq-toc {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 360px;
+  background: var(--status-bg);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-toc h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.faq-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.faq-toc a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.faq-toc a:hover {
+  text-decoration: underline;
+}
+
+.faq-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faq-section h3 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.faq-card[open] {
+  box-shadow: var(--shadow-lg);
+}
+
+.faq-card summary {
+  padding: 1.25rem 1.5rem;
+  list-style: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-card summary::after {
+  content: "+";
+  font-size: 1.25rem;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.faq-card[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-content {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--muted);
+  display: grid;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.faq-content p {
+  margin: 0;
+}
+
+.faq-content ol,
+.faq-content ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.faq-content li {
+  line-height: 1.5;
+}
+
+@media (min-width: 900px) {
+  .faq-intro {
+    font-size: 1.1rem;
+  }
+
+  .faq-section {
+    gap: 2rem;
+  }
+
+  .faq-list {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .faq {
+    gap: 1.5rem;
+  }
+
+  .faq-toc {
+    max-width: none;
+    box-shadow: none;
+  }
+
+  .faq-card summary {
+    font-size: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .faq-content {
+    padding: 0 1.25rem 1.25rem;
+  }
+}
+
 /* Landing hero */
 .landing .hero {
   display: grid;
