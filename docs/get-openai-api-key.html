@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Step-by-step instructions for creating and securing an OpenAI API key for Sidebar AI Chat." />
+    <link rel="icon" type="image/svg+xml" href="/chat.svg" />
+    <title>Get an OpenAI API Key - SidebarAIchat.com</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 class="brand"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="header-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+      </svg>
+       Sidebar AI Chat</a></h1>
+      <nav class="site-nav"><a href="/docs/" aria-current="page">Docs</a></nav>
+      <button id="theme-toggle" aria-label="Toggle theme"></button>
+    </header>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/docs/">Docs</a></li>
+        <li><span aria-current="page">Get an OpenAI API Key</span></li>
+      </ol>
+    </nav>
+    <main>
+      <h2>Get an OpenAI API Key</h2>
+      <p>Follow these steps to create and safely store an OpenAI API key that you can use with Sidebar AI Chat.</p>
+      <h3>1. Create or sign in to your OpenAI account</h3>
+      <p>Visit the <a href="https://platform.openai.com/signup" target="_blank" rel="noreferrer noopener">OpenAI platform signup page</a> and create an account, or sign in with your existing credentials. The platform account is where you manage API access, billing, and usage.</p>
+      <h3>2. Review billing status</h3>
+      <p>OpenAI requires an active payment method for most API access. Go to <a href="https://platform.openai.com/account/billing/overview" target="_blank" rel="noreferrer noopener">Billing &amp; usage</a> to add a credit card, manage spend limits, and review usage tiers. Free trial credits may be available, but ensure your payment details are up to date before generating keys you plan to use in production.</p>
+      <h3>3. Generate a new API key</h3>
+      <p>Navigate to the <a href="https://platform.openai.com/account/api-keys" target="_blank" rel="noreferrer noopener">API keys dashboard</a> and select <strong>Create new secret key</strong>. Choose a descriptive name so you can identify the key later (for example, “Sidebar AI Chat”). OpenAI will show the key only once—copy it before closing the dialog.</p>
+      <h3>4. Store the key securely</h3>
+      <p>Treat the key like a password. Paste it into the provider settings inside Sidebar AI Chat, and store a backup in a secure secrets manager or encrypted notes app. Avoid sharing the key in support tickets, screenshots, or version control.</p>
+      <h3>5. Rotate keys when needed</h3>
+      <p>If the key is exposed or you no longer use it, return to the API keys page to revoke it and create a replacement. Update Sidebar AI Chat with the new key immediately to prevent downtime.</p>
+      <h3>Additional resources</h3>
+      <ul>
+        <li><a href="https://platform.openai.com/docs/guides/api-reference" target="_blank" rel="noreferrer noopener">OpenAI API reference</a> – endpoints, parameters, and rate limits.</li>
+        <li><a href="https://platform.openai.com/docs/guides/responsible-use" target="_blank" rel="noreferrer noopener">OpenAI safety best practices</a> – guidance for responsible use and data handling.</li>
+        <li><a href="https://platform.openai.com/docs/guides/managing-your-keys" target="_blank" rel="noreferrer noopener">Managing your keys</a> – official instructions for creating and rotating keys.</li>
+      </ul>
+    </main>
+    <footer>
+      © <span id="year"></span> SidebarAIchat.com | <a href="/docs/">Docs</a>
+    </footer>
+    <script src="/script.js"></script>
+  </body>
+</html>
