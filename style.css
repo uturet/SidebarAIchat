@@ -220,7 +220,6 @@ p {
 
 /* FAQ layout */
 .faq {
-  width: 100%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
@@ -393,6 +392,7 @@ p {
 
 @media (max-width: 720px) {
   .faq {
+    width: 100%;
     gap: 1.5rem;
   }
 
