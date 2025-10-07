@@ -2,7 +2,7 @@
   --bg: #ffffff;
   --text: #111111;
   --border: #e5e7eb;
-  --muted: #6b7280;
+  --muted: #575b64;
   --header-bg: #ffffff;
   --status-bg: #f8fafc;
   --status-border: #e5e7eb;
@@ -32,10 +32,10 @@ body {
 }
 
 body.dark {
-  --bg: #0b0c0e;
+  --bg: #23272e;
   --text: #e5e7eb;
   --border: #23262d;
-  --muted: #a1a1aa;
+  --muted: #c0c0d1;
   --header-bg: #0b0c0e;
   --status-bg: #0f1115;
   --status-border: #1c1f27;
@@ -220,6 +220,8 @@ p {
 
 /* FAQ layout */
 .faq {
+  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -241,12 +243,8 @@ p {
 }
 
 .faq-toc {
-  border: 1px solid var(--border);
-  border-radius: 16px;
   padding: 1.5rem;
   max-width: 360px;
-  background: var(--status-bg);
-  box-shadow: var(--shadow-md);
 }
 
 .faq-toc h3 {
@@ -289,6 +287,7 @@ p {
 .faq-list {
   display: grid;
   gap: 1rem;
+  grid-template-columns: 1fr;
 }
 
 .faq-card {
@@ -327,8 +326,9 @@ p {
 }
 
 .faq-card summary::after {
+  margin-top: 4px;
   content: "+";
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   line-height: 1;
   transition: transform 0.2s ease, color 0.2s ease;
   margin-left: 1rem;
@@ -387,7 +387,7 @@ p {
   }
 
   .faq-list {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 
@@ -398,7 +398,6 @@ p {
 
   .faq-toc {
     max-width: none;
-    box-shadow: none;
   }
 
   .faq-card summary {
