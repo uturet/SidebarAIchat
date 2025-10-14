@@ -12,6 +12,9 @@
   --accent-soft: rgba(37,99,235,0.1);
   --shadow-lg: 0 30px 60px rgba(0,0,0,0.08), 0 12px 24px rgba(0,0,0,0.06);
   --shadow-md: 0 12px 24px rgba(0,0,0,0.08);
+  --bp-sm: 600px;
+  --bp-md: 900px;
+  --bp-lg: 1200px;
 }
 
 body {
@@ -58,43 +61,18 @@ a:visited {
 header {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--border);
-  padding: 1.25rem 2rem;
+  padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
-.brand {
+.brand,
+header h1 {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
-}
-header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; }
-
-  @media (max-width: 600px) {
-    .brand {
-      font-size: 1rem;
-    }
-  }
-
-@media (max-width: 600px) {
-  .site-header,
-  header {
-    padding: 1rem 1.25rem;
-    gap: 1rem;
-  }
-
-  .site-nav a,
-  header nav a {
-    margin-right: 0.75rem;
-    font-size: 0.95rem;
-  }
-
-  #theme-toggle {
-    width: 32px;
-    height: 32px;
-  }
 }
 
 .brand a,
@@ -120,10 +98,10 @@ header nav {
 
 .site-nav a,
 header nav a {
-  margin-right: 1rem;
+  margin-right: 0.75rem;
   color: var(--text);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   transition: color 0.2s;
 }
@@ -149,8 +127,8 @@ header nav a:hover {
   border-radius: 999px;
   cursor: pointer;
   color: var(--text);
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: inline-grid;
   place-items: center;
 }
@@ -163,50 +141,78 @@ header nav a:hover {
   display: block;
 }
 
+@media (min-width: var(--bp-sm)) {
+  .site-header,
+  header {
+    padding: 1.25rem 2rem;
+    gap: 1.25rem;
+  }
+
+  .site-nav a,
+  header nav a {
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+
+  .brand,
+  header h1 {
+    font-size: 1.125rem;
+  }
+
+  #theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  main {
+    padding: 0 1.5rem 6rem;
+  }
+}
+
 main {
   flex: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem 6rem;
+  padding: 0 1rem 4rem;
 }
 
-  /* Breadcrumbs */
-  .breadcrumbs {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    color: var(--muted);
-  }
+/* Breadcrumbs */
+.breadcrumbs {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  color: var(--muted);
+}
 
-  .breadcrumbs ol {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0.5rem;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-  }
+.breadcrumbs ol {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
 
-  .breadcrumbs li + li::before {
-    content: "/";
-    color: var(--border);
-    margin: 0 0.5rem;
-  }
+.breadcrumbs li + li::before {
+  content: "/";
+  color: var(--border);
+  margin: 0 0.5rem;
+}
 
-  .breadcrumbs a {
-    color: var(--muted);
-    text-decoration: none;
-  }
+.breadcrumbs a {
+  color: var(--muted);
+  text-decoration: none;
+}
 
-  .breadcrumbs a:hover {
-    text-decoration: underline;
-  }
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
 
-  .breadcrumbs [aria-current="page"] {
-    color: var(--text);
-    font-weight: 600;
-  }
+.breadcrumbs [aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
+}
 
 h2 {
   font-size: 1.5rem;
@@ -220,12 +226,13 @@ p {
 
 /* FAQ layout */
 .faq {
-  max-width: 800px;
+  max-width: 720px;
+  width: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   padding-top: 2rem;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 }
 
 .faq h2 {
@@ -243,7 +250,7 @@ p {
 
 .faq-toc {
   padding: 1.5rem;
-  max-width: 360px;
+  max-width: none;
 }
 
 .faq-toc h3 {
@@ -308,11 +315,11 @@ p {
 }
 
 .faq-card summary {
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
   list-style: none;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -353,7 +360,7 @@ p {
 }
 
 .faq-content {
-  padding: 0 1.5rem 1.5rem;
+  padding: 0 1.25rem 1.25rem;
   color: var(--muted);
   display: grid;
   gap: 1rem;
@@ -376,7 +383,27 @@ p {
   line-height: 1.5;
 }
 
-@media (min-width: 900px) {
+@media (min-width: var(--bp-sm)) {
+  .faq {
+    gap: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .faq-toc {
+    max-width: 360px;
+  }
+
+  .faq-card summary {
+    font-size: 1.05rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .faq-content {
+    padding: 0 1.5rem 1.5rem;
+  }
+}
+
+@media (min-width: var(--bp-md)) {
   .faq-intro {
     font-size: 1.1rem;
   }
@@ -384,39 +411,16 @@ p {
   .faq-section {
     gap: 2rem;
   }
-
-  .faq-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 720px) {
-  .faq {
-    width: 100%;
-    gap: 1.5rem;
-  }
-
-  .faq-toc {
-    max-width: none;
-  }
-
-  .faq-card summary {
-    font-size: 1rem;
-    padding: 1rem 1.25rem;
-  }
-
-  .faq-content {
-    padding: 0 1.25rem 1.25rem;
-  }
 }
 
 /* Landing hero */
 .landing .hero {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
   align-items: center;
-  padding: 5rem 0 2rem;
+  padding: 4rem 0 2rem;
+  text-align: center;
 }
 
 .eyebrow {
@@ -444,6 +448,8 @@ p {
 .hero-ctas {
   display: flex;
   gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .hero-media {
@@ -458,13 +464,16 @@ p {
   background: linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
 }
 
-@media (max-width: 980px) {
+@media (min-width: var(--bp-md)) {
   .landing .hero {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    text-align: left;
   }
-  .hero-ctas { justify-content: center; }
+
+  .hero-ctas {
+    justify-content: flex-start;
+  }
 }
 
 /* Legacy feature blocks (kept for docs consistency) */
