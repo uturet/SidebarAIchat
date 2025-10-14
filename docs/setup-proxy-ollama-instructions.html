@@ -47,7 +47,7 @@
 
         location / {
             if ($request_method = 'OPTIONS') {
-                add_header 'Access-Control-Allow-Origin' 'chrome-extension://ID';
+                add_header 'Access-Control-Allow-Origin' 'chrome-extension://hkpcjhbbhndcianjdlcphihidaagedgn';
                 add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE';
                 add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization';
                 add_header 'Access-Control-Max-Age' 1728000;
@@ -57,7 +57,7 @@
             }
 
             # CORS headers for actual requests
-            add_header 'Access-Control-Allow-Origin' 'chrome-extension://ID' always;
+            add_header 'Access-Control-Allow-Origin' 'chrome-extension://hkpcjhbbhndcianjdlcphihidaagedgn' always;
             add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE' always;
             add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization' always;
             add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range' always;
