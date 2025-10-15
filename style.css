@@ -454,6 +454,10 @@ p {
 
 .hero-media {
   position: relative;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  overflow-x: scroll;
 }
 
 .product-shot {
