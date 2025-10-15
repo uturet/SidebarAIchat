@@ -48,6 +48,7 @@ body.dark {
   --accent-soft: rgba(96,165,250,0.18);
   --shadow-lg: 0 30px 60px rgba(0,0,0,0.6), 0 12px 24px rgba(0,0,0,0.4);
   --shadow-md: 0 12px 24px rgba(0,0,0,0.45);
+  --shadow-sm: 0 4px 24px rgb(133 140 169 / 45%);
 }
 
 a,
@@ -59,6 +60,7 @@ a:visited {
 /* Header */
 .site-header,
 header {
+  transition: background-color 0.3s, color 0.3s;
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--border);
   padding: 1rem 1.25rem;
@@ -500,7 +502,7 @@ p {
   letter-spacing: -0.01em;
   border: 1px solid rgba(0,0,0,0.04);
   transition: background 0.2s ease, transform 0.05s ease, box-shadow 0.2s ease;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .cta-button:hover { background: #000; }
