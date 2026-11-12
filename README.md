@@ -1,4 +1,4 @@
-# [SidebarAI Chat](https://sidebaraichat.com)
+# [SidebarAI Chat](https://uturet.github.io/SidebarAIchat/)
 
 This repository contains the static landing page for SidebarAI Chat. The project aims to bring any AI model into your browser without subscriptions by letting you plug in your own API key and start chatting.
 
